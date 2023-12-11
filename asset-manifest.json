@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/mantrick-admin/static/css/main.f35a2824.css",
+    "main.js": "/mantrick-admin/static/js/main.d2a22d88.js",
+    "static/media/logo.png": "/mantrick-admin/static/media/logo.a607672882bc95f6d66f.png",
+    "static/media/Proxima Nova Font.otf": "/mantrick-admin/static/media/Proxima Nova Font.7bc9ce404c297c24f210.otf",
+    "index.html": "/mantrick-admin/index.html",
+    "main.f35a2824.css.map": "/mantrick-admin/static/css/main.f35a2824.css.map",
+    "main.d2a22d88.js.map": "/mantrick-admin/static/js/main.d2a22d88.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f35a2824.css",
+    "static/js/main.d2a22d88.js"
+  ]
+}
