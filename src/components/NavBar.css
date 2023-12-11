@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+.navContainer{
+    width:100%;
+    /* background-color: blue; */
+    position: absolute;
+    
+    top:0;
+    z-index: 990;
+}
+.navbar{
+    display: flex;
+    width:80%;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding:50px auto;
+    /* background-color: blue; */
+    /* height: 5vh; */
+    /* background-color: red; */
+}
+
+.navbar ul{
+    display: flex;
+}
+
+.navbar ul li{
+    list-style: none;
+    margin: 20px;
+}
+
+.navbar ul li a,
+.logo{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px;
+    color:#335061;
+    font-size: 13px !important;
+    letter-spacing: 2px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: bold;
+    /* background-color: red; */
+    /* font-family: 'GreycliffBold'; */
+}
+
+.logo{
+    width:200px;
+}
+
+.logo img{
+    width:100%;
+}
+
+
+.hamburgerMenu{
+    display: none;
+}
+.hamburgerMenuContent{
+    width: 100vw;
+    height:100vh;
+    margin:0;
+    padding:0;
+    position: fixed;
+    top:0;
+    background-color: #ffffff;
+    /* background-color: red; */
+    z-index: 2;
+    transform: translateX(-2000px);
+    transition: all 0.6s ease;
+}
+
+.hamburgerMenuContent.show{
+    transform: translateX(0px);
+    transition: all 0.6s ease;
+}
+
+
+.hamburgerMenuContent ul{
+    width: 100%;
+    /* height:100vh; */
+    /* background-color: red; */
+    margin-top:28%;
+}
+
+.hamburgerMenuContent ul li{
+    list-style-type: none;
+    text-align: left;
+    padding:12px;
+    letter-spacing: 1.5px;
+}
+
+.hamburgerMenuContent ul li a{
+    text-decoration: none;
+    font-family: 'Lexend Deca', 'sans-serif';
+    font-weight: 1000;
+    font-size: 13px;
+    color: #7d4026;
+    /* padding:0 10px; */
+}
+
+.hamburgerMenuContent ul li a img{
+    height:12vh;
+}
+
+.hamburger{
+    width:26px;
+    /* height: 2px; */
+    background-color: #335061;
+    position: absolute;
+    top:6%;
+    right:10%;
+    z-index: 3 !important;
+    transition: all 0.6s ease;
+}
+
+.hamburger::before{
+    content: '';
+    position: absolute;
+    /* transform: translateY(-10px); */
+    background-color: #335061;
+    width:40px;
+    height: 2.5px;
+    z-index: 3 !important;
+    transition: all 0.6s ease;
+ }
+
+.hamburger::after{
+    content: '';
+    position: absolute;
+    transform: translateY(15px);
+    background-color: #335061;
+    width:20px;
+    height: 2.5px;
+    z-index: 3 !important;
+    transition: all 0.6s ease;
+ }
+
+
+.hamburgerMenu .hamburgerMenuLine .toggler{
+    width: 50px;
+    height: 50px;
+    /* background-color: red; */
+    position: absolute;
+    top:4%;
+    right:4.2%;
+    z-index: 4 !important;
+    opacity: 0;
+}
+
+.hamburgerMenu .hamburgerMenuLine .toggler:checked + .hamburger::before{
+    background-color: #5d301d !important;
+    -webkit-transform: rotate(45deg) translateY(5px);
+    transform: rotate(45deg) translateY(5px);
+}
+
+
+.hamburgerMenu .hamburgerMenuLine .toggler:checked + .hamburger::after{
+    background-color: #5d301d;
+    width:40px;
+    -webkit-transform: rotate(-45deg) translateX(-5px);
+    transform: rotate(-45deg) translateX(-5px);    
+}
+
+.leftLogo{
+    padding:0;
+}
+
+.menuFooter{
+    position: absolute;
+    bottom:5%;
+    left:12%;
+    display:flex;
+    justify-content:space-between;
+    width:75%;
+    padding:0;
+    margin:0 auto;
+    /* background-color:red; */
+}
+
+.rightSocials a{
+    padding:2px;
+    margin-right:5px;
+} 
+
+
+@media only screen and (max-width: 1300px) {
+    .navbar{
+        display: flex;
+        width:90%;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding:50px auto;
+    
+    }
+    #logo
+    {
+        top: -35%;
+        left: 14%;
+    }
+    .navbar ul{
+        display: flex;
+    }
+    
+    .navbar ul li{
+        list-style: none;
+        margin: 15px;
+    }
+    
+    .navbar ul li a,
+    .logo{
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 10px;
+        color:#335061;
+        font-size: 12px !important;
+        letter-spacing: 2px;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: bold;
+        /* background-color: red; */
+        /* font-family: 'GreycliffBold'; */
+    }
+}
+
+
+
+
+@media only screen and (max-width: 1000px) {
+    .navItems{
+        display: none;
+    }
+
+    .hamburgerMenu{
+        display: block;
+    }
+
+    .logo{
+        width:100px;
+        /* background-color:red; */
+        position: absolute;
+        top:150%;
+        left:-5%;
+    }
+
+    .logo img{
+        width:100%;
+    }
+}
+
+/* For laptops */
+@media (min-width: 1024px) {
+    .customDrawer {
+      width: 50%;
+    }
+  }
+  
+  /* For mobiles */
+  @media (max-width: 768px) {
+    .customDrawer {
+      width: 50%;
+    }
+  }
+  
+  /* Common padding styles for both laptops and mobiles */
+  .customDrawer {
+    padding: 20px; /* Adjust the padding as needed */
+  }
+
+

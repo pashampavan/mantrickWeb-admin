@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Swayam-Admin/static/css/main.c896a7ec.css",
+    "main.js": "/Swayam-Admin/static/js/main.3690ca21.js",
+    "static/media/logo.png": "/Swayam-Admin/static/media/logo.a607672882bc95f6d66f.png",
+    "static/media/Proxima Nova Font.otf": "/Swayam-Admin/static/media/Proxima Nova Font.7bc9ce404c297c24f210.otf",
+    "index.html": "/Swayam-Admin/index.html",
+    "main.c896a7ec.css.map": "/Swayam-Admin/static/css/main.c896a7ec.css.map",
+    "main.3690ca21.js.map": "/Swayam-Admin/static/js/main.3690ca21.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c896a7ec.css",
+    "static/js/main.3690ca21.js"
+  ]
+}

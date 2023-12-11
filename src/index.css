@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Poppins&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  /* background-color: red !important; */
+  line-height: 1.6;
+  font-family: 'Lexend Deca', 'san-serif',ss
+}
+
+@font-face {
+  font-family: 'Proxima Nova',sans-serif;
+  src: url(./../src/fonts/Proxima\ Nova\ Font.otf);
+  font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Proxima Nova',
+}
+.eventsBlock .events
+{  width: "100%";
+   margin: '25px auto';
+    display: 'grid';
+    grid-template-columns:'repeat(4, 1fr)';
+    grid-gap:"15px";
+}
