@@ -11,24 +11,10 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
   // Function to handle blog deletion
   const handleDeleteBlog = async (blogId,imageUrl) => {
     try {
-      // Delete the blog from the database
-      const imageRef = ref(storage, imageUrl)
-      // storageRef.delete()
-      deleteObject(imageRef)
-      .then(async () => {
         await axios.delete(
-          `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
+          `https://mantrickweb-default-rtdb.firebaseio.com/studentcorner/${blogId}.json`
         );
         window.location.reload();
-      })
-      .catch(async (error) => {
-        await axios.delete(
-          `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
-        );
-        window.location.reload();
-          console.log("Failed to delete image: ", error)
-      })
-      
     } catch (error) {
       console.error('Error deleting blog:', error);
     }
@@ -67,13 +53,13 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
   };
 
   const handleEditBlog = () => {
-    navigate(`/content/add-edit-blog/${id}`);
+    navigate(`/studentcorner/add-edit-blog/${id}`);
   };
 
   return (
     <Card variant="outlined" sx={cardStyle} style={{width:"auto",height:"auto"}}>
-      <CardContent style={{position:"relative", fontFamily: 'Proxima Nova',}}>
-        <img src={thumbnail} style={{ width: '100%', height: '150px', objectFit: 'cover' }} alt="Blog Thumbnail" />
+      <CardContent style={{position:"relative", fontFamily: 'Proxima Nova'}}>
+        {/* <img src={thumbnail} style={{ width: '100%', height: '150px', objectFit: 'cover' }} alt="Blog Thumbnail" /> */}
         <Typography variant="subtitle2" color="textSecondary" gutterBottom style={{ marginTop: '10px' }}>
           {formattedDate}
         </Typography>

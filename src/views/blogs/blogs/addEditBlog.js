@@ -63,7 +63,7 @@ const AddEditBlog = () => {
       }
       else
       {
-        const thumbnailRef = ref(storage, `thumbnails/${blogThumbnail.name}` + v4());
+        const thumbnailRef = ref(storage, `blogs/${blogThumbnail.name}` + v4());
         await uploadBytes(thumbnailRef, blogThumbnail);
         thumbnailURL = await getDownloadURL(thumbnailRef);
       }
@@ -77,7 +77,7 @@ const AddEditBlog = () => {
           }
           else
           {
-            const imageRef = ref(storage, `training/${item.image.name}` + v4());
+            const imageRef = ref(storage, `images/${item.image.name}` + v4());
             await uploadBytes(imageRef, item.image);
             imageURL = await getDownloadURL(imageRef);
           }
@@ -96,7 +96,7 @@ const AddEditBlog = () => {
       };
 
       if (id === 'b1') {
-        const response = await apiServices.saveBlog(newBlog);
+        const response = await apiServices.saveRealBlog(newBlog);
         // const response = await axios.post('https://swayam-website-d9b3d-default-rtdb.asia-southeast1.firebasedatabase.app/blogs.json', newBlog);
         if (response.status === 200) {
           setBlogTitle('');
@@ -108,8 +108,7 @@ const AddEditBlog = () => {
           showSnackbar('Failed to save blog.', 'error');
         }
       } else {
-        alert(newBlog);
-        await apiServices.updateBlog(id, newBlog);
+        await apiServices.updateRealBlog(id, newBlog);
         // await axios.put(`https://swayam-website-d9b3d-default-rtdb.asia-southeast1.firebasedatabase.app/blogs/${id}.json`, newBlog);
         showSnackbar('Blog updated successfully!', 'success');
       }
@@ -120,21 +119,23 @@ const AddEditBlog = () => {
   };
 
   useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const response = await apiServices.fetchBlog(id);
-        // const response = await axios.get(`https://swayam-website-d9b3d-default-rtdb.asia-southeast1.firebasedatabase.app/blogs/${id}.json`);
-        const blogData = response.data;
-        // Set the fetched data in the state
-        setBlogTitle(blogData.title);
-        setBlogDescription(blogData.iframeSrc);
-        setBlogThumbnail(blogData.imageUrl);
-        setBlogContent(blogData.blogcontent);
-      } catch (error) {
-        console.error('Error fetching blog:', error);
-      }
-    };
     if (id !== 'b1') {
+      const fetchBlog = async () => {
+        try {
+          await apiServices.fetchRealBlog(id).then((response)=>{
+            const blogData = response.data;
+            setBlogTitle(blogData.title);
+            setBlogDescription(blogData.iframeSrc);
+            setBlogThumbnail(blogData.imageUrl);
+            if(blogData.blogcontent)
+            setBlogContent(blogData.blogcontent);
+          });
+          // const response = await axios.get(`https://swayam-website-d9b3d-default-rtdb.asia-southeast1.firebasedatabase.app/blogs/${id}.json`);
+          // Set the fetched data in the state
+        } catch (error) {
+          console.error('Error fetching blog:', error);
+        }
+      };
       fetchBlog();
     }
   }, [id]);
@@ -143,7 +144,8 @@ const AddEditBlog = () => {
   return (
     <>
     <Paper elevation={3} sx={{ p: 2, maxWidth: '80%', margin: '150px auto' }}>
-      <Typography variant="h4">{id === 'b1' ? 'Add' : 'Edit'} Video Details</Typography>
+      <Typography variant="h4">{id === 'b1' ? 'Add' : 'Edit'} Blog Details</Typography>
+      
       <Box my={1}>
         <TextField
           fullWidth
@@ -157,7 +159,7 @@ const AddEditBlog = () => {
       <Box my={2}>
         <TextField
           fullWidth
-          label="Movie Iframe Source"
+          label="Description"
           variant="outlined"
           multiline
           rows={4}
@@ -167,15 +169,15 @@ const AddEditBlog = () => {
         />
       </Box>
       <Box my={2}>
-        <Typography variant="subtitle1">Video Thumbnail:</Typography>
+        <Typography variant="subtitle1">Blog Thumbnail:</Typography>
         {id === 'b1' ? (
           <input type="file" accept="image/*" required onChange={(e) => setBlogThumbnail(e.target.files[0])} />
         ) : (
           <img src={blogThumbnail} alt="Thumbnail" width={'40%'} />
         )}
       </Box>
-      {/* <Box my={2}>
-        {blogContent.length > 0 && blogContent.map((item, index) => (
+      <Box my={2}>
+        {blogContent &&  blogContent.length > 0 && blogContent.map((item, index) => (
           <div key={index}>
             {'heading' in item && (
               <div>
@@ -258,7 +260,7 @@ const AddEditBlog = () => {
             {'note' in item && (
               <div>
                 <Box display="block" alignItems="center" justifyContent="space-between" mb={2}>
-                  <Typography>Quote:</Typography>
+                  <Typography>Note+:</Typography>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <TextField
                       variant="filled"
@@ -293,8 +295,8 @@ const AddEditBlog = () => {
             )}
           </div>
         ))}
-      </Box> */}
-      {/* <Box my={2}>
+      </Box> 
+      { blogContent &&  <Box my={2}>
         <Button variant="contained" size="small" onClick={() => handleContentChange('heading', '', blogContent.length)} startIcon={<Title />} sx={{ mr: 1 }}>
           Add Heading
         </Button>
@@ -313,10 +315,13 @@ const AddEditBlog = () => {
         <Button variant="contained" size="small" onClick={() => handleContentChange('image',null, blogContent.length)} startIcon={<Image />} sx={{ mr: 1 }}>
           Add Image
         </Button>
-      </Box> */}
+      </Box>
+
+      }
+       
       <Box my={2}>
         <Button variant="contained" onClick={handleSaveBlog}>
-          {id === 'b1' ? 'Save Video' : 'Update Video'}
+          {id === 'b1' ? 'Save Blog' : 'Update Blog'}
         </Button>
       </Box>
     </Paper>

@@ -77,17 +77,13 @@ const Login = ({setLogin}) => {
       }
     })
     console.log('Invalid credentials');
-    // if (username.trim() !== '' && password.trim() !== '') {
-    //     console.log('Login successful!');
-    //     setLogin(true);
-    //     localStorage.setItem('login',true);
-    //     navigate('/dashboard'); // Navigate to the other page
-    // } else {
-    //     console.log('Invalid credentials');
-    // }
   };
   useEffect(
   () => {
+    if(localStorage.getItem('login'))
+    {
+      navigate('/dashboard');
+    }
       axios
               .get(`https://mantrickweb-default-rtdb.firebaseio.com/admins.json`, {
                       headers: {
@@ -98,22 +94,6 @@ const Login = ({setLogin}) => {
                     setAdmins(res.data);
                   })
                   .catch((err) => console.log(err));
-        // if (user) {
-            // axios
-            //     .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-            //         headers: {
-            //             Authorization: `Bearer ${user.access_token}`,
-            //             Accept: 'application/json'
-            //         }
-            //     })
-            //     .then((res) => {
-            //         setProfile(res.data);
-            //         setLogin(true);
-            //         localStorage.setItem('login',true);
-            //         navigate('/dashboard');
-            //     })
-            //     .catch((err) => console.log(err)); 
-        // }
     },
     [ ]
 );

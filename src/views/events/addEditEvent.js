@@ -55,7 +55,7 @@ const AddEditEvent = () => {
           }
           else
           {
-            const imageRef = ref(storage, `images/${item.image.name}` + v4());
+            const imageRef = ref(storage, `photos/${item.image.name}` + v4());
             await uploadBytes(imageRef, item.image);
             imageURL = await getDownloadURL(imageRef);
           }

@@ -7,6 +7,9 @@ import Typography from '@mui/material/Typography';
 import { Edit, Delete } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+import { storage } from "../../firebase";
+import { getStorage, ref, deleteObject } from 'firebase/storage';
 const EventThumbnail = ({ title, url, date, imageOne, imageTwo, id ,eventDescription}) => {
   const navigate = useNavigate()
 
@@ -28,14 +31,27 @@ const EventThumbnail = ({ title, url, date, imageOne, imageTwo, id ,eventDescrip
     color:"rgba(51, 80, 97, 0.7)",
   };
 
-  const handleDeleteBlog = async (eventId) => {
+  const handleDeleteBlog = async (eventId,imageUrl) => {
     try {
       // Delete the blog from the database
+      
+      const imageRef = ref(storage, imageUrl)
+      // storageRef.delete()
+      deleteObject(imageRef)
+      .then(async () => {
+      })
+      .catch((error) => {
+        console.log("Failed to delete image: ", error)
+      })
       await axios.delete(
-        `https://mantrickweb-default-rtdb.firebaseio.com//events/${eventId}.json`
+        `https://mantrickweb-default-rtdb.firebaseio.com/events/${eventId}.json`
       );
       window.location.reload();
     } catch (error) {
+      await axios.delete(
+        `https://mantrickweb-default-rtdb.firebaseio.com/events/${eventId}.json`
+      );
+      window.location.reload();
       console.error('Error deleting blog:', error);
     }
   };
@@ -57,7 +73,7 @@ const EventThumbnail = ({ title, url, date, imageOne, imageTwo, id ,eventDescrip
           <IconButton onClick={handleCardClick}>
             <Edit />
           </IconButton>
-          <IconButton onClick={() => handleDeleteBlog(id)}>
+          <IconButton onClick={() => handleDeleteBlog(id,imageOne)}>
             <Delete />
           </IconButton>
         </div>

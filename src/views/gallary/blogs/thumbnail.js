@@ -6,29 +6,29 @@ import axios from 'axios';
 import { storage } from "../../../firebase";
 import { getStorage, ref, deleteObject } from 'firebase/storage';
 const Thumbnail = ({ date, title, description, thumbnail, id }) => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
   // Function to handle blog deletion
   const handleDeleteBlog = async (blogId,imageUrl) => {
+    
     try {
-      // Delete the blog from the database
       const imageRef = ref(storage, imageUrl)
       // storageRef.delete()
       deleteObject(imageRef)
       .then(async () => {
         await axios.delete(
-          `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
-        );
-        window.location.reload();
-      })
-      .catch(async (error) => {
+          `https://mantrickweb-default-rtdb.firebaseio.com/gallary/${blogId}.json`
+          );
+          window.location.reload();
+        })
+        .catch(async (error) => {
         await axios.delete(
-          `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
-        );
-        window.location.reload();
+          `https://mantrickweb-default-rtdb.firebaseio.com/gallary/${blogId}.json`
+          );
+          window.location.reload();
           console.log("Failed to delete image: ", error)
       })
-      
+
     } catch (error) {
       console.error('Error deleting blog:', error);
     }
@@ -67,7 +67,7 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
   };
 
   const handleEditBlog = () => {
-    navigate(`/content/add-edit-blog/${id}`);
+    navigate(`/gallary/add-edit-blog/${id}`);
   };
 
   return (

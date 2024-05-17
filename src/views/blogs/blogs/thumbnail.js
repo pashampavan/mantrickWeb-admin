@@ -1,31 +1,37 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { Card, CardContent, CardActions, Typography, Box, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Edit, Delete } from '@mui/icons-material';
 import axios from 'axios';
 import { storage } from "../../../firebase";
 import { getStorage, ref, deleteObject } from 'firebase/storage';
+import apiServices from '../../../services/apiServices';
+import { async } from '@firebase/util';
 const Thumbnail = ({ date, title, description, thumbnail, id }) => {
   const navigate = useNavigate();
-
+  const [blogContent, setBlogContent] = useState([]);
   // Function to handle blog deletion
   const handleDeleteBlog = async (blogId,imageUrl) => {
     try {
       // Delete the blog from the database
-      const imageRef = ref(storage, imageUrl)
+      var imageRef = ref(storage, imageUrl)
       // storageRef.delete()
       deleteObject(imageRef)
       .then(async () => {
-        await axios.delete(
-          `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
-        );
-        window.location.reload();
+        del(blogContent,0).then(async ()=>{
+          await axios.delete(
+            `https://mantrickweb-default-rtdb.firebaseio.com/realblogs/${blogId}.json`
+          );
+          window.location.reload();
+        });
       })
-      .catch(async (error) => {
-        await axios.delete(
-          `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
-        );
-        window.location.reload();
+      .catch((error) => {
+        del(blogContent,0).then(async ()=>{
+          await axios.delete(
+            `https://mantrickweb-default-rtdb.firebaseio.com/realblogs/${blogId}.json`
+          );
+          window.location.reload();
+        });
           console.log("Failed to delete image: ", error)
       })
       
@@ -33,7 +39,18 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
       console.error('Error deleting blog:', error);
     }
   };
-
+  const del=async(blogContent,i)=>{
+    if(blogContent.length===i)
+    return;
+    if('image' in blogContent[i])
+    {
+      var imageRef = ref(storage, blogContent[i].image);
+      await deleteObject(imageRef).then((blogContent)=>{
+      del(blogContent,i+1);
+    });
+  }
+  await del(blogContent,i+1);
+  }
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'short', day: '2-digit' };
     const date = new Date(dateString);
@@ -67,9 +84,25 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
   };
 
   const handleEditBlog = () => {
-    navigate(`/content/add-edit-blog/${id}`);
+    navigate(`/blogs/add-edit-blog/${id}`);
   };
-
+  useEffect(() => {
+      const fetchBlog = async () => {
+        try {
+          await apiServices.fetchRealBlog(id).then((response)=>{
+            const blogData = response.data;
+            if(blogData.blogcontent)
+            setBlogContent(blogData.blogcontent);
+          });
+          // const response = await axios.get(`https://swayam-website-d9b3d-default-rtdb.asia-southeast1.firebasedatabase.app/blogs/${id}.json`);
+          // Set the fetched data in the state
+        } catch (error) {
+          console.error('Error fetching blog:', error);
+        }
+      
+      fetchBlog();
+    }
+  },[]);
   return (
     <Card variant="outlined" sx={cardStyle} style={{width:"auto",height:"auto"}}>
       <CardContent style={{position:"relative", fontFamily: 'Proxima Nova',}}>

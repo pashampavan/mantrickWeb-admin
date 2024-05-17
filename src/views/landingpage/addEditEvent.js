@@ -42,7 +42,7 @@ const AddEditLanding = () => {
       }
       else
       {
-        const imageOneRef = ref(storage, `eventThumbnailOne/${eventImageOne.name}` + v4());
+        const imageOneRef = ref(storage, `landings/${eventImageOne.name}` + v4());
         await uploadBytes(imageOneRef, eventImageOne);
         imageOneURL = await getDownloadURL(imageOneRef);
       }

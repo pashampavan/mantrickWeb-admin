@@ -39,7 +39,7 @@ function NavBar({login,setLogin}) {
               (<div></div>)
               }
           <Link>
-            <img src="https://mantrickstudios.com/wp-content/uploads/2020/10/MANTRICK_STUDIOS_red-1.png" alt="Swayam Logo" id="logo" className="logo" />
+            <img src="https://mantrickstudios.com/old/wp-content/uploads/2020/10/MANTRICK_STUDIOS_red-1.png" alt="mantrick Logo" id="logo" className="logo" />
           </Link>
           </div>
           {
@@ -63,6 +63,15 @@ function NavBar({login,setLogin}) {
                 </ListItem>
                 <ListItem button component={Link} to="/landingpage">
                     <ListItemText primary="landingpage" style={{padding:"20px 50px"}}/>
+                </ListItem>
+                <ListItem button component={Link} to="/blogs">
+                    <ListItemText primary="blogs" style={{padding:"20px 50px"}}/>
+                </ListItem>
+                <ListItem button component={Link} to="/gallary">
+                    <ListItemText primary="gallary" style={{padding:"20px 50px"}}/>
+                </ListItem>
+                <ListItem button component={Link} to="/studentcorner">
+                    <ListItemText primary="studentcorner" style={{padding:"20px 50px"}}/>
                 </ListItem>
             </List>
       </Drawer>
