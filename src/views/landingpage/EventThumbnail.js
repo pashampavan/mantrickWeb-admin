@@ -40,14 +40,14 @@ const EventThumbnail = ({ title, url, date, imageOne, imageTwo, id ,eventDescrip
         await axios.delete(
           `https://mantrickweb-default-rtdb.firebaseio.com//landingpage/${eventId}.json`
         );
-        window.location.reload();
+        navigate(`/landingpage`);
       })
       .catch(async (error) => {
         await axios.delete(
           `https://mantrickweb-default-rtdb.firebaseio.com//landingpage/${eventId}.json`
         );
-        window.location.reload();
-          console.log("Failed to delete image: ", error)
+        navigate(`/landingpage`);
+        console.log("Failed to delete image: ", error)
       })
       
     } catch (error) {

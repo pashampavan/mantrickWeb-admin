@@ -39,7 +39,7 @@ function NavBar({login,setLogin}) {
               (<div></div>)
               }
           <Link>
-            <img src="https://mantrickstudios.com/old/wp-content/uploads/2020/10/MANTRICK_STUDIOS_red-1.png" alt="mantrick Logo" id="logo" className="logo" />
+            <img src="https://mantrickstudios.com/static/media/mantrickstudios_logo.3ff4c2049d64bdbfcef7.webp" alt="mantrick Logo" id="logo" className="logo" />
           </Link>
           </div>
           {

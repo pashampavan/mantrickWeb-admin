@@ -48,7 +48,7 @@ const AddEditGallary = () => {
   //   setBlogContent(updatedContent);
   // };
 
-  const handleSaveBlog = async () => {
+  const handleSaveBslog = async () => {
     if (blogTitle === '' ||  blogThumbnail === null) {
       showSnackbar('Please fill in all mandatory fields (Blog Title, Blog Description, and Blog Thumbnail) before saving.', 'error');
       return;
@@ -295,7 +295,7 @@ const AddEditGallary = () => {
         </Button>
       </Box> */}
       <Box my={2}>
-        <Button variant="contained" onClick={handleSaveBlog}>
+        <Button variant="contained" onClick={handleSaveBslog}>
           {id === 'b1' ? 'Save Photo' : 'Update Photo'}
         </Button>
       </Box>

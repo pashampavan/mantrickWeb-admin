@@ -19,13 +19,13 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
         await axios.delete(
           `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
         );
-        window.location.reload();
+        navigate(`/content`);
       })
       .catch(async (error) => {
         await axios.delete(
           `https://mantrickweb-default-rtdb.firebaseio.com/blogs/${blogId}.json`
         );
-        window.location.reload();
+        navigate(`/content`);
           console.log("Failed to delete image: ", error)
       })
       

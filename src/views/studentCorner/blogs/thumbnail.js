@@ -14,7 +14,7 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
         await axios.delete(
           `https://mantrickweb-default-rtdb.firebaseio.com/studentcorner/${blogId}.json`
         );
-        window.location.reload();
+        navigate(`/studentcorner/`);
     } catch (error) {
       console.error('Error deleting blog:', error);
     }

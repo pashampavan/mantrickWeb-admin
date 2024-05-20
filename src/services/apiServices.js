@@ -215,6 +215,15 @@ class ApiServices {
         return err.response;
     }
   }
+  updateStudentcorner = async (id, newEvent) => {
+    try {
+        const response = await apiClient.put(`/studentcorner/${id}.json`, newEvent);
+        return response;
+      } catch (err) {
+        console.error(`Error: ${err}`);
+        return err.response;
+    }
+  }
 
 }
 

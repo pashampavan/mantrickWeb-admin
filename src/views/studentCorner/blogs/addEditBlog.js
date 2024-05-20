@@ -116,7 +116,6 @@ const AddEditBlog = () => {
           showSnackbar('Failed to save blog.', 'error');
         }
       } else {
-        alert(newBlog);
         await apiServices.updateStudentcorner(id, newBlog);
         // await axios.put(`https://swayam-website-d9b3d-default-rtdb.asia-southeast1.firebasedatabase.app/blogs/${id}.json`, newBlog);
         showSnackbar('Blog updated successfully!', 'success');
@@ -203,6 +202,9 @@ const AddEditBlog = () => {
       <Box my={2}>
         <TextField
           fullWidth
+          InputLabelProps={{
+            shrink: true,
+        }}
           label="Video iframe source"
           variant="outlined"
           rows={1}

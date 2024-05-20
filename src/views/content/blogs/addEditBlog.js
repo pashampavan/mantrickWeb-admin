@@ -68,31 +68,12 @@ const AddEditBlog = () => {
         thumbnailURL = await getDownloadURL(thumbnailRef);
       }
 
-      const updatedContent = [];
-      for (const item of blogContent) {
-        if ('image' in item) {
-          var imageURL = "";
-          if((item.image).slice(0, 8) === "https://"){
-            imageURL = item.image;
-          }
-          else
-          {
-            const imageRef = ref(storage, `training/${item.image.name}` + v4());
-            await uploadBytes(imageRef, item.image);
-            imageURL = await getDownloadURL(imageRef);
-          }
-          updatedContent.push({ image: imageURL });
-        } else {
-          updatedContent.push(item);
-        }
-      }
 
       const newBlog = {
         title: blogTitle,
         date: new Date().toISOString(),
         iframeSrc: blogDescription,
         imageUrl: thumbnailURL,
-        blogcontent: updatedContent,
       };
 
       if (id === 'b1') {
@@ -108,7 +89,6 @@ const AddEditBlog = () => {
           showSnackbar('Failed to save blog.', 'error');
         }
       } else {
-        alert(newBlog);
         await apiServices.updateBlog(id, newBlog);
         // await axios.put(`https://swayam-website-d9b3d-default-rtdb.asia-southeast1.firebasedatabase.app/blogs/${id}.json`, newBlog);
         showSnackbar('Blog updated successfully!', 'success');

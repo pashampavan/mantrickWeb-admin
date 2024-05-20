@@ -10,6 +10,7 @@ import { async } from '@firebase/util';
 const Thumbnail = ({ date, title, description, thumbnail, id }) => {
   const navigate = useNavigate();
   const [blogContent, setBlogContent] = useState([]);
+  const [refresh, setRefresh] = useState(1);
   // Function to handle blog deletion
   const handleDeleteBlog = async (blogId,imageUrl) => {
     try {
@@ -22,7 +23,7 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
           await axios.delete(
             `https://mantrickweb-default-rtdb.firebaseio.com/realblogs/${blogId}.json`
           );
-          window.location.reload();
+          navigate(`/blogs`);
         });
       })
       .catch((error) => {
@@ -30,7 +31,7 @@ const Thumbnail = ({ date, title, description, thumbnail, id }) => {
           await axios.delete(
             `https://mantrickweb-default-rtdb.firebaseio.com/realblogs/${blogId}.json`
           );
-          window.location.reload();
+          navigate(`/blogs`);
         });
           console.log("Failed to delete image: ", error)
       })

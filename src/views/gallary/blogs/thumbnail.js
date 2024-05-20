@@ -19,13 +19,13 @@ const navigate = useNavigate();
         await axios.delete(
           `https://mantrickweb-default-rtdb.firebaseio.com/gallary/${blogId}.json`
           );
-          window.location.reload();
+          navigate(`/gallary`);
         })
         .catch(async (error) => {
         await axios.delete(
           `https://mantrickweb-default-rtdb.firebaseio.com/gallary/${blogId}.json`
           );
-          window.location.reload();
+          navigate(`/gallary`);
           console.log("Failed to delete image: ", error)
       })
 
