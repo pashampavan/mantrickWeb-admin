@@ -20,9 +20,12 @@ import AddEditGallary from './views/gallary/blogs/addEditBlog';
 import AddEditStudentcorner from './views/studentCorner/blogs/addEditBlog';
 import AllEvents from './views/events/allEvents';
 import AllLandings from './views/landingpage/allEvents';
+import AllTestimonials from './views/testimonials/allEvents';
 import AddEditEvent from './views/events/addEditEvent';
 import AddEditLanding from './views/landingpage/addEditEvent';
+import AddEditTestimonials from './views/testimonials/addEditEvent';
 import Landingpage from './views/landingpage';
+import Testimonials from './views/testimonials';
 function App() {
   const [login,setLogin]=useState(null);
   return (
@@ -30,21 +33,28 @@ function App() {
     <NavBar login={login} setLogin={setLogin}/>
     <Routes>
         <Route path='/mantrickweb-admin' element={<Login  setLogin={setLogin}/>} />
+        <Route path='/login' exact element={<Login />} />
         <Route path='/admin' element={<Login  setLogin={setLogin}/>} />
         <Route path='/' element={<Login  setLogin={setLogin}/>} />
         <Route path='/user/*' element={<User />} />
         <Route path='/login' exact element={<Login setLogin={setLogin} />} />
         <Route path="/dashboard" exact element={<Dashboard />} />
-        <Route path='/content' exact element={<Content />} />
+
         <Route path='/events' exact element={<Events />} />
+        <Route path='/events/all-events' exact element={<AllEvents/>} />
+        <Route path='/events/add-edit-event/:id' exact element={<AddEditEvent/>} />
+
         <Route path='/landingpage' exact element={<Landingpage />} />
-        <Route path='/login' exact element={<Login />} />
+        <Route path='/landingpage/all-landings' exact element={<AllLandings/>} />
+        <Route path='/landingpage/add-edit-landing/:id' exact element={<AddEditLanding/>} />
+
+        <Route path='/content' exact element={<Content />} />
         <Route path='/content/all-blogs' exact element={<AllBlogs/>} />
         <Route path='/content/add-edit-blog/:id' exact element={<AddEditBlog/>} />
-        <Route path='/events/add-edit-event/:id' exact element={<AddEditEvent/>} />
-        <Route path='/landingpage/add-edit-landing/:id' exact element={<AddEditLanding/>} />
-        <Route path='/events/all-events' exact element={<AllEvents/>} />
-        <Route path='/landingpage/all-landings' exact element={<AllLandings/>} />
+
+        <Route path='/testimonials' exact element={<Testimonials />} />
+        <Route path='/testimonials/add-edit-landing/:id' exact element={<AddEditTestimonials/>} />
+        <Route path='/testimonials/all-landings' exact element={<AllTestimonials/>} />
         <Route
           path="/"
           exact

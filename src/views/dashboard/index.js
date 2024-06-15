@@ -101,6 +101,21 @@ const Dashboard = () => {
             </CardActions>
           </Card>
         </Grid>
+        <Grid item xs={12} sm={2} md={2}>
+          <Card>
+            <CardContent>
+              <EventIcon fontSize="large" />
+              <Typography variant="h5" component="div">
+                Testimonials
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button component={Link} to="/testimonials" size="small" color="primary">
+                Open
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
       </Grid>
     </div>
   );

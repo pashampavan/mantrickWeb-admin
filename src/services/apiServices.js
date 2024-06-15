@@ -47,6 +47,15 @@ class ApiServices {
       return err.response;
     }
   };
+  fetchAllTestimonials = async () => {
+    try {
+      const response = await apiClient.get(`/testimonials.json`);
+      return response;
+    } catch (err) {
+      console.error(`Error: ${err}`);
+      return err.response;
+    }
+  };
   fetchAllGallary = async () => {
     try {
       const response = await apiClient.get(`/gallary.json`);
@@ -112,6 +121,15 @@ class ApiServices {
       return err.response;
     }
   };
+  fetchTestimonials = async (id) => {
+    try {
+      const response = await apiClient.get(`/testimonials/${id}.json`);
+      return response;
+    } catch (err) {
+      console.error(`Error: ${err}`);
+      return err.response;
+    }
+  };
 
   saveBlog = async (newBlog) => {
     try {
@@ -163,6 +181,15 @@ class ApiServices {
   saveLanding = async (newEvent) => {
     try {
         const response = await apiClient.post(`/landingpage.json`, JSON.stringify(newEvent));
+        return response;
+      } catch (err) {
+        console.error(`Error: ${err}`);
+        return err.response;
+    }
+  }
+  saveTestimonials = async (newEvent) => {
+    try {
+        const response = await apiClient.post(`/testimonials.json`, JSON.stringify(newEvent));
         return response;
       } catch (err) {
         console.error(`Error: ${err}`);

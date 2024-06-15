@@ -73,6 +73,9 @@ function NavBar({login,setLogin}) {
                 <ListItem button component={Link} to="/studentcorner">
                     <ListItemText primary="studentcorner" style={{padding:"20px 50px"}}/>
                 </ListItem>
+                <ListItem button component={Link} to="/testimonials">
+                    <ListItemText primary="testimonials" style={{padding:"20px 50px"}}/>
+                </ListItem>
             </List>
       </Drawer>
 

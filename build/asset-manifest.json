@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/admin/static/css/main.3ccd257e.css",
-    "main.js": "/admin/static/js/main.543be333.js",
+    "main.js": "/admin/static/js/main.96d8df8c.js",
     "static/media/logo.png": "/admin/static/media/logo.a607672882bc95f6d66f.png",
     "static/media/Proxima Nova Font.otf": "/admin/static/media/Proxima Nova Font.7bc9ce404c297c24f210.otf",
     "index.html": "/admin/index.html",
     "main.3ccd257e.css.map": "/admin/static/css/main.3ccd257e.css.map",
-    "main.543be333.js.map": "/admin/static/js/main.543be333.js.map"
+    "main.96d8df8c.js.map": "/admin/static/js/main.96d8df8c.js.map"
   },
   "entrypoints": [
     "static/css/main.3ccd257e.css",
-    "static/js/main.543be333.js"
+    "static/js/main.96d8df8c.js"
   ]
 }
