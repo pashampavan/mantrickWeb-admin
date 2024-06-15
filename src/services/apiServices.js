@@ -65,6 +65,15 @@ class ApiServices {
       return err.response;
     }
   };
+  fetchAllClients = async () => {
+    try {
+      const response = await apiClient.get(`/clients.json`);
+      return response;
+    } catch (err) {
+      console.error(`Error: ${err}`);
+      return err.response;
+    }
+  };
 
   fetchBlog = async (id) => {
     try {
@@ -106,6 +115,15 @@ class ApiServices {
   fetchGallary = async (id) => {
     try {
       const response = await apiClient.get(`/gallary/${id}.json`);
+      return response;
+    } catch (err) {
+      console.error(`Error: ${err}`);
+      return err.response;
+    }
+  };
+  fetchClient = async (id) => {
+    try {
+      const response = await apiClient.get(`/clients/${id}.json`);
       return response;
     } catch (err) {
       console.error(`Error: ${err}`);
@@ -205,6 +223,15 @@ class ApiServices {
         return err.response;
     }
   }
+  saveClient = async (newEvent) => {
+    try {
+        const response = await apiClient.post(`/clients.json`, JSON.stringify(newEvent));
+        return response;
+      } catch (err) {
+        console.error(`Error: ${err}`);
+        return err.response;
+    }
+  }
   saveStudentcorner = async (newEvent) => {
     try {
         const response = await apiClient.post(`/studentcorner.json`, JSON.stringify(newEvent));
@@ -218,6 +245,15 @@ class ApiServices {
   updateEvent = async (id, newEvent) => {
     try {
         const response = await apiClient.put(`/landingpage/${id}.json`, newEvent);
+        return response;
+      } catch (err) {
+        console.error(`Error: ${err}`);
+        return err.response;
+    }
+  }
+  updateClient = async (id, newEvent) => {
+    try {
+        const response = await apiClient.put(`/clients/${id}.json`, newEvent);
         return response;
       } catch (err) {
         console.error(`Error: ${err}`);

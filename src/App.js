@@ -12,11 +12,14 @@ import Studentcorner from './views/studentCorner';
 import AllBlogs from './views/content/blogs/allBlogs';
 import RealAllBlogs from './views/blogs/blogs/allBlogs';
 import GallaryAllBlogs from './views/gallary/blogs/allBlogs';
+import ClientsAllBlogs from './views/clients/blogs/allBlogs';
 import StudentcornerAllBlogs from './views/studentCorner/blogs/allBlogs';
 import Gallary from './views/gallary';
+import Clients from './views/clients';
 import AddEditBlog from './views/content/blogs/addEditBlog';
 import AddRealEditBlog from './views/blogs/blogs/addEditBlog';
 import AddEditGallary from './views/gallary/blogs/addEditBlog';
+import AddEditClients from './views/clients/blogs/addEditBlog';
 import AddEditStudentcorner from './views/studentCorner/blogs/addEditBlog';
 import AllEvents from './views/events/allEvents';
 import AllLandings from './views/landingpage/allEvents';
@@ -68,6 +71,11 @@ function App() {
         <Route path='/gallary/all-blogs' exact element={<GallaryAllBlogs/>} />
         <Route path='/gallary/add-edit-blog/:id' exact element={<AddEditGallary/>} />
         <Route path='/gallary' exact element={<Gallary />} />
+
+        <Route path='/clients/all-blogs' exact element={<ClientsAllBlogs/>} />
+        <Route path='/clients/add-edit-blog/:id' exact element={<AddEditClients/>} />
+        <Route path='/clients' exact element={<Clients />} />
+
         {/* studentcorner */}
         <Route path='/studentcorner' exact element={<Studentcorner />} />
         <Route path='/studentcorner/all-blogs' exact element={<StudentcornerAllBlogs/>} />

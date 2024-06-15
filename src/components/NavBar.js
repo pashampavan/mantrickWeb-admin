@@ -55,6 +55,9 @@ function NavBar({login,setLogin}) {
       </AppBar>
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)} className='customDrawer'>
             <List style={{marginTop:"15%"}}>
+                <ListItem button component={Link} to="/dashboard">
+                    <ListItemText primary="dash board" style={{padding:"20px 50px"}}/>
+                </ListItem>
                 <ListItem button component={Link} to="/content">
                     <ListItemText primary="Training Videos" style={{padding:"20px 50px"}}/>
                 </ListItem>
@@ -75,6 +78,9 @@ function NavBar({login,setLogin}) {
                 </ListItem>
                 <ListItem button component={Link} to="/testimonials">
                     <ListItemText primary="testimonials" style={{padding:"20px 50px"}}/>
+                </ListItem>
+                <ListItem button component={Link} to="/clients">
+                    <ListItemText primary="clients" style={{padding:"20px 50px"}}/>
                 </ListItem>
             </List>
       </Drawer>
