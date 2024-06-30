@@ -13,6 +13,7 @@
 
 ## Table of Contents
 - [Installation](#installation)
+- Usage
 - [Demo](#demo)
   
 ## instalation & Setup
@@ -32,5 +33,9 @@ Then, run the development server:
 ```bash
 npm run start
 ```
-
+## Usage 
+- Login with admin credentials given by company
+- Manage media and data in all the services.
+  
+## Demo
 Open [http://localhost:3000](http://localhost:3000) with your browser.
